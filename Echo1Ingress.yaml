@@ -11,7 +11,7 @@ metadata:
     certmanager.k8s.io/cluster-issuer: letsencrypt-staging
 spec:
   rules:
-    - host: nlokongtesting1.possibilit.nl
+    - host: <hostname>
     - http:
         paths:
           - path: "/"
@@ -20,6 +20,6 @@ spec:
               servicePort: 80
   tls:
     - hosts:
-        - nlokongtesting1.possibilit.nl
+        - <hostname>
       secretName: letsencrypt-staging
       # This secret is created automatically
