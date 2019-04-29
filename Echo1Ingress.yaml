@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: testing-ingress-echo
+  #namespace: default
+  annotations:
+    kubernetes.io/ingress.class: "kong"
+    certmanager.k8s.io/acme-challenge-type: http01
+    kubernetes.io/tls-acme: "true"
+    # certmanager.k8s.io/acme-http01-edit-in-place: "true"
+    certmanager.k8s.io/cluster-issuer: letsencrypt-staging
+spec:
+  rules:
+    - host: nlokongtesting1.possibilit.nl
+    - http:
+        paths:
+          - path: "/"
+            backend:
+              serviceName: echo1
+              servicePort: 80
+  tls:
+    - hosts:
+        - nlokongtesting1.possibilit.nl
+      secretName: letsencrypt-staging
+      # This secret is created automatically

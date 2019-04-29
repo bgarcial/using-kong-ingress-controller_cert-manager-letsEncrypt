@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: konga
+  namespace: kong
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: konga
+    spec:
+      containers:
+        - env:
+            - name: NODE_TLS_REJECT_UNAUTHORIZED
+              value: "0"
+          image: pantsel/konga:latest
+          name: konga
+          ports:
+            - containerPort: 1337
