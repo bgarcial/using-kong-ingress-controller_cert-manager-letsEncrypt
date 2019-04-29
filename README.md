@@ -19,3 +19,5 @@ helm install \
 - Acme Kong Kube Helper - https://github.com/ollystephens/acme-kong-kube-helper 
 
 We are using acme kong kube helper like a third container inside the Kong Ingress controller deployment
+
+At the moment a `ClusterIssuer` was created, and it is working in `staging-evironment`
